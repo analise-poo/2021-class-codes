@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+import '../../utils/utils.dart';
+
 class TopContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: AppColors.blue,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * .25,
       child: Padding(
