@@ -4,7 +4,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 
 import '../components/components.dart';
 import '../../utils/utils.dart';
-import 'new_page.dart';
+import 'my_trends_page.dart';
 
 class CandleItem {
   CandleItem(this.min, this.max);
@@ -48,13 +48,9 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             icon: Icon(FontAwesome5Solid.equals),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => NewPage(),
-              ),
-            ),
-          )
+            onPressed: () =>
+                Navigator.pushNamed(context, MyTrendsPage.pageName),
+          ),
         ],
         elevation: 0,
       ),

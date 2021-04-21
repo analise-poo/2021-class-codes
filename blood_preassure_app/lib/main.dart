@@ -16,7 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: AppColors.blue,
       ),
-      home: HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        MyTrendsPage.pageName: (context) => MyTrendsPage(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }

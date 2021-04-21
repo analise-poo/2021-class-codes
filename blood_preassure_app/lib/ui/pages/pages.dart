@@ -1,2 +1,2 @@
 export 'home.dart';
-export 'new_page.dart';
+export 'my_trends_page.dart';
