@@ -26,6 +26,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_icons: ^1.1.0
   charts_painter: ^1.0.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
