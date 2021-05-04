@@ -16,12 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: AppColors.blue,
       ),
-      initialRoute: HomeTestPage.pageName,
+      initialRoute: LoadingPage.pageName,
       routes: {
         '/': (context) => HomePage(),
         MyTrendsPage.pageName: (context) => MyTrendsPage(),
         SignupPage.pageName: (context) => SignupPage(),
         HomeTestPage.pageName: (context) => HomeTestPage(),
+        LoadingPage.pageName: (context) => LoadingPage(),
       },
       debugShowCheckedModeBanner: false,
     );

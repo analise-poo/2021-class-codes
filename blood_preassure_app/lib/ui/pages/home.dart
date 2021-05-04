@@ -14,6 +14,8 @@ class CandleItem {
 }
 
 class HomePage extends StatefulWidget {
+  static String pageName = '/';
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -39,10 +41,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: CircleAvatar(
-          radius: 8,
-          backgroundImage: NetworkImage(
-            'https://uifaces.co/our-content/donated/KtCFjlD4.jpg',
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Image.network(
+              'https://uifaces.co/our-content/donated/1H_7AxP0.jpg',
+            ),
           ),
         ),
         actions: [

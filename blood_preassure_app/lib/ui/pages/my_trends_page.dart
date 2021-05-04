@@ -113,7 +113,7 @@ class MyTrendsPage extends StatelessWidget {
               //   ),
               // ),
               Container(
-                height: 900,
+                height: (9 * 81.0),
                 child: ListView(
                   physics: NeverScrollableScrollPhysics(),
                   children: [
