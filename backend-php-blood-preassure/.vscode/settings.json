@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "blood-preassure-app",
+            "database": "${workspaceFolder:backend-php-blood-preassure}/database/database.sqlite"
+        }
+    ]
+}

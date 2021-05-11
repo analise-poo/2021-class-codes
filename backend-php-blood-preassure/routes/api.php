@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ Route::get('/hello', function(){
     return ['msg' => 'hello, world'];
 });
 
-Route::get('/users', function (Request $request) {
-    return User::all();
+Route::get('users', [UsersController::class, 'index']);
+
+// Route::get('users/{user}', [UsersController::class, 'show']);
+Route::get('users/{user}', function(User $user){
+    return $user;
 });
+// Route::resource('users', [UsersController::class]);
