@@ -20,10 +20,17 @@ Route::get('/hello', function(){
     return ['msg' => 'hello, world'];
 });
 
-Route::get('users', [UsersController::class, 'index']);
-
+// Route::get('users', [UsersController::class, 'index']);
 // Route::get('users/{user}', [UsersController::class, 'show']);
-Route::get('users/{user}', function(User $user){
-    return $user;
-});
-// Route::resource('users', [UsersController::class]);
+// Route::get('users/{user}', function(User $user){
+//     return $user;
+// });
+// Route::post('/users', [UsersController::class, 'create']);
+
+Route::resource('users', UsersController::class); // 'users.action'
+// index GET users - retorna a lista de todos o usuários
+// show GET users/user - retorna o usuários de id
+// create POST users - cria um novo usuário
+// update PUT/PATCH users/user - altera o usuário
+// destroy DELETE users - remove o usuário
+

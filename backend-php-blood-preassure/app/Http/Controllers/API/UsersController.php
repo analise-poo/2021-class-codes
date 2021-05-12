@@ -27,7 +27,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users|max:128',
+            'password' => 'required',
+        ]);
+
+        $user = User::create([
+            'uuid' => (string) \Illuminate\Support\Str::uuid(),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        return $user;
     }
 
     /**
@@ -53,9 +66,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update();
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users|max:128',
+        ]);
 
-        return response()->json(['msg' => 'atualizado com sucesso.']);
+        $user->update($request->only('name','email'));
+
+        // $user->name = $request->input('name');
+        // $user->email = $request->input('email');
+        // $user->save();
+
+        return response()->json([
+            'message' => 'atualizado com sucesso.',
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -66,8 +91,11 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        // $user->delete();
 
-        return response()->json(['msg' => 'removido com sucesso.']);
+        return response()->json(['error' => [
+            'code' => 321,
+            'message' => 'lorem ipsum...',
+        ]]);
     }
 }
