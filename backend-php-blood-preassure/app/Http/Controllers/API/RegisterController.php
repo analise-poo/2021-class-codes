@@ -1,15 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class RegisterController extends Controller
 {
-
-    public function store(Request $request){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users|max:128',
@@ -23,10 +29,7 @@ class UserController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
 
-        return redirect()->route('home');
+        return $user->createToken('mobile')->plainTextToken;
     }
 
-    public function create(){
-        return view('users.create');
-    }
 }

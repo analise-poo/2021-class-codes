@@ -29,12 +29,14 @@
                     <div class="col-span-6 sm:col-span-4">
                       <label for="first_name" class="block text-sm font-medium text-gray-700">Nome</label>
                       <input type="text" name="name" id="first_name" autocomplete="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-
                     </div>
 
                     <div class="col-span-6 sm:col-span-4">
                       <label for="email_address" class="block text-sm font-medium text-gray-700">Email</label>
                       <input type="text" name="email" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                      @error('email')
+                        <span class="text-sm text-red-500"> {{ $message }} </span>
+                      @enderror
                     </div>
 
                     <div class="col-span-6 sm:col-span-4">

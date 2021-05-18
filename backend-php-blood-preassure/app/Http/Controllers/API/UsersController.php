@@ -18,6 +18,19 @@ class UsersController extends Controller
         return User::all();
     }
 
+    /**
+     * Função que retorna lista de usuários com alguns campos
+     * removidos.
+     *
+     * @return \Illuminate\Support\Collection $users
+     */
+    public function details()
+    {
+        $users = User::all()->each(function($user){
+            $user->makeHidden(['created_at','updated_at',]);
+        });
+        return $users;
+    }
 
     /**
      * Store a newly created resource in storage.

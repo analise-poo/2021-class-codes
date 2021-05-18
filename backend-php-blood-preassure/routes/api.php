@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\API\LoginController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\UsersController;
 
 /*
@@ -27,10 +29,18 @@ Route::get('/hello', function(){
 // });
 // Route::post('/users', [UsersController::class, 'create']);
 
-Route::resource('users', UsersController::class); // 'users.action'
+Route::post('register', [RegisterController::class, 'register'])
+    ->name('register');
+
+Route::post('login', [LoginController::class, 'login'])
+    ->name('login');
+
+Route::resource('users', UsersController::class)
+    ->middleware('auth:sanctum'); // 'users.action'
 // index GET users - retorna a lista de todos o usuários
 // show GET users/user - retorna o usuários de id
 // create POST users - cria um novo usuário
 // update PUT/PATCH users/user - altera o usuário
 // destroy DELETE users - remove o usuário
+Route::get('users/details', [UsersController::class, 'details']);
 

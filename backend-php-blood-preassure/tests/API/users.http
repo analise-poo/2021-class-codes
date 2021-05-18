@@ -1,5 +1,11 @@
 GET http://127.0.0.1:8000/api/users HTTP/1.1
 Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 2|0ZeSoe9AbPLrlmOzVSVJtS1u7e0BxVV2vpFgRaaQ
+
+###
+GET http://127.0.0.1:8000/api/users/details HTTP/1.1
+Content-Type: application/json
 
 ###
 GET http://127.0.0.1:8000/api/users/8 HTTP/1.1
