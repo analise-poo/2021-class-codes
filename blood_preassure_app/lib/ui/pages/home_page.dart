@@ -1,6 +1,8 @@
+import 'package:blood_preassure_app/state/provider/bottom_index.dart';
 import 'package:charts_painter/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:provider/provider.dart';
 
 import '../components/components.dart';
 import '../../utils/utils.dart';
@@ -29,40 +31,43 @@ class _HomePageState extends State<HomePage> {
     CandleItem(50, 120),
   ];
 
-  int _selected = 1;
+  // int _selected = 1;
 
-  void swichBottomItem(index) {
-    setState(() {
-      _selected = index;
-    });
-  }
+  // void swichBottomItem(index) {
+  //   setState(() {
+  //     _selected = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: Image.network(
-              'https://uifaces.co/our-content/donated/1H_7AxP0.jpg',
+    return Provider<BottomIndex>(
+      create: (_) => BottomIndex(),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: Image.network(
+                'https://uifaces.co/our-content/donated/1H_7AxP0.jpg',
+              ),
             ),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(FontAwesome5Solid.equals),
+              onPressed: () =>
+                  Navigator.pushNamed(context, MyTrendsPage.pageName),
+            ),
+          ],
+          elevation: 0,
         ),
-        actions: [
-          IconButton(
-            icon: Icon(FontAwesome5Solid.equals),
-            onPressed: () =>
-                Navigator.pushNamed(context, MyTrendsPage.pageName),
-          ),
-        ],
-        elevation: 0,
-      ),
-      body: _buildBody(_selected),
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: _selected,
-        onPressed: swichBottomItem,
+        body: _buildBody(context.watch<BottomIndex>().index),
+        bottomNavigationBar: BottomNavBar(
+          selectedIndex: context.watch<BottomIndex>().index,
+          onPressed: context.read<BottomIndex>().changeIndex,
+        ),
       ),
     );
   }

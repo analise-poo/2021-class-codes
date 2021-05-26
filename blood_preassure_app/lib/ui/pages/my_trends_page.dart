@@ -1,9 +1,11 @@
 import 'dart:math';
 
+import 'package:blood_preassure_app/state/provider/bottom_index.dart';
 import 'package:blood_preassure_app/ui/components/components.dart';
 import 'package:blood_preassure_app/utils/utils.dart';
 import 'package:charts_painter/chart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Measure {
   final DateTime date;
@@ -75,7 +77,11 @@ class MyTrendsPage extends StatelessWidget {
                   Text(
                     'My Trends',
                     style: TextStyle(color: Colors.grey),
-                  )
+                  ),
+                  Provider(
+                    create: (_) => BottomIndex(),
+                    child: Text('${context.watch<BottomIndex>().index}'),
+                  ),
                 ],
               ),
               Container(

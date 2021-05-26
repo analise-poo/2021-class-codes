@@ -29,6 +29,8 @@ dependencies:
   intl: ^0.17.0
   flutter_svg : ^0.17.4
 
+  provider: ^5.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

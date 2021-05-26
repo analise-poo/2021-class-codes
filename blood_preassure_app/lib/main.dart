@@ -1,10 +1,19 @@
+import 'package:blood_preassure_app/state/provider/bottom_index.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'ui/pages/pages.dart';
 import 'utils/utils.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => BottomIndex(),
+      ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
