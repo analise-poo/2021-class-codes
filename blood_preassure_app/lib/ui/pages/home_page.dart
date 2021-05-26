@@ -1,8 +1,8 @@
-import 'package:blood_preassure_app/state/provider/bottom_index.dart';
+import 'package:blood_preassure_app/state/get/getx_bottom_controller.dart';
 import 'package:charts_painter/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 import '../components/components.dart';
 import '../../utils/utils.dart';
@@ -39,11 +39,12 @@ class _HomePageState extends State<HomePage> {
   //   });
   // }
 
+  final GetxBottomController controller = Get.find<GetxBottomController>();
+
   @override
   Widget build(BuildContext context) {
-    return Provider<BottomIndex>(
-      create: (_) => BottomIndex(),
-      child: Scaffold(
+    return GetBuilder<GetxBottomController>(
+      builder: (controller) => Scaffold(
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -63,10 +64,10 @@ class _HomePageState extends State<HomePage> {
           ],
           elevation: 0,
         ),
-        body: _buildBody(context.watch<BottomIndex>().index),
+        body: Obx(() => _buildBody(controller.index.value)),
         bottomNavigationBar: BottomNavBar(
-          selectedIndex: context.watch<BottomIndex>().index,
-          onPressed: context.read<BottomIndex>().changeIndex,
+          selectedIndex: controller.index.value,
+          onPressed: controller.changeIndex,
         ),
       ),
     );

@@ -19,7 +19,16 @@ use App\Http\Controllers\API\UsersController;
 */
 
 Route::get('/hello', function(){
-    return ['msg' => 'hello, world'];
+    $measures = collect();
+
+    for ($i=0; $i < 20; $i++) {
+        $measures->push([
+            'date' => \Carbon\Carbon::now()->subDay($i),
+            'syst' => rand(10, 160)
+        ]);
+    }
+
+    return ['msg' => 'hello, world', 'data' => $measures];
 });
 
 // Route::get('users', [UsersController::class, 'index']);
