@@ -1,4 +1,5 @@
 import 'package:blood_preassure_app/state/get/getx_bottom_controller.dart';
+import 'package:blood_preassure_app/ui/pages/bindings/bindings.dart';
 import 'package:charts_painter/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 import '../components/components.dart';
 import '../../utils/utils.dart';
 import 'my_trends_page.dart';
+import 'trend_test_page.dart';
 
 class CandleItem {
   CandleItem(this.min, this.max);
@@ -59,7 +61,7 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               icon: Icon(FontAwesome5Solid.equals),
               onPressed: () =>
-                  Navigator.pushNamed(context, MyTrendsPage.pageName),
+                  Get.to(() => MyTrendsPage(), binding: MyTrendsBinding()),
             ),
           ],
           elevation: 0,

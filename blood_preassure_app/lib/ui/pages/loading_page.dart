@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
 
 import '../ui.dart';
 
@@ -6,8 +8,16 @@ class LoadingPage extends StatelessWidget {
   static String pageName = 'loading-page';
 
   Future<void> loading(BuildContext context) async {
+    final FlutterSecureStorage storage = FlutterSecureStorage();
+
     await Future.delayed(Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed(HomePage.pageName);
+      var token = storage.read(key: 'token');
+
+      if (token == null) {
+        Get.to(() => LoginPage(), binding: LoginBinding());
+      } else {
+        Navigator.of(context).pushReplacementNamed(HomePage.pageName);
+      }
     });
   }
 

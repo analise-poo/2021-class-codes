@@ -1,12 +1,12 @@
+import 'package:blood_preassure_app/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class MeasureCard extends StatelessWidget {
-  final DateTime date;
+  final Measure measure;
   final int index;
-  final int value;
 
-  MeasureCard({this.date, this.index = 0, this.value = 0});
+  MeasureCard({this.measure, this.index = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +24,12 @@ class MeasureCard extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('${DateFormat('d/MM/y').format(date)}'),
-            Text('${DateFormat.Hm().format(date)}'),
+            Text('${DateFormat('d/MM/y').format(measure.date)}'),
+            Text('${DateFormat.Hm().format(measure.date)}'),
           ],
         ),
         leading: Text('$index'),
-        trailing: Text('$value'),
+        trailing: Text('${measure.value}'),
       ),
     );
   }

@@ -33,6 +33,7 @@ dependencies:
   get:
   # network
   dio:
+  flutter_secure_storage: ^4.2.0
     
 dev_dependencies:
   flutter_test:

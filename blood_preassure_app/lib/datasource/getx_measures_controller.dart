@@ -1,33 +1,30 @@
-import 'package:blood_preassure_app/ui/ui.dart';
+import 'package:blood_preassure_app/models/measure.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 
 class GetxMeasuresController extends GetxController {
-  final _measures = Rx<List<Measures>>([]);
+  final measures = <Measure>[].obs;
+  final count1 = Rx<int>(0);
+  final count2 = 0.obs;
+  int get sum => count1.value + count2.value;
+  // List<Measure> get measures => _measures.value;
+  int get length => measures.length;
 
   Future<void> fetch() async {
     try {
-      var response = await Dio().get('http://192.168.1.8:8000/api/hello');
+      var response =
+          await Dio().get('https://dry-caverns-11135.herokuapp.com/api/hello');
       var data = response.data['data'] as List;
 
       data.forEach((element) {
         print(element);
-        _measures.value.add(Measures(
-          syst: element['syst'],
+        measures.add(Measure(
+          value: element['syst'],
           date: DateTime.parse(element['date']),
         ));
       });
-
-      print(_measures.value.length);
     } catch (e) {
       print(e);
     }
   }
-}
-
-class Measures {
-  final int syst;
-  final DateTime date;
-
-  Measures({this.syst, this.date});
 }

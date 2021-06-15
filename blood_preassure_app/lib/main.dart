@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'ui/pages/bindings/bindings.dart';
 import 'ui/pages/pages.dart';
+import 'ui/pages/trend_test_page.dart';
 import 'utils/utils.dart';
 
 void main() {
@@ -33,8 +34,23 @@ class MyApp extends StatelessWidget {
           binding: HomePageBinding(),
         ),
         GetPage(
+          name: LoginPage.pageName,
+          page: () => LoginPage(),
+          binding: LoginBinding(),
+        ),
+        GetPage(
+          name: RegisterPage.pageName,
+          page: () => RegisterPage(),
+          binding: RegisterBinding(),
+        ),
+        GetPage(
           name: MyTrendsPage.pageName,
           page: () => MyTrendsPage(),
+          binding: MyTrendsBinding(),
+        ),
+        GetPage(
+          name: TrendTestPage.pageName,
+          page: () => TrendTestPage(),
         ),
         GetPage(
           name: SignupPage.pageName,
