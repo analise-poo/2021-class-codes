@@ -21,7 +21,7 @@ use App\Http\Controllers\API\UsersController;
 Route::get('/hello', function(){
     $measures = collect();
 
-    for ($i=0; $i < 20; $i++) {
+    for ($i=0; $i < 4; $i++) {
         $measures->push([
             'date' => \Carbon\Carbon::now()->subDay($i),
             'syst' => rand(10, 160)
